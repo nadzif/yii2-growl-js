@@ -33,8 +33,10 @@ class Growl extends Widget
 
     public function run()
     {
+        $containerOptions = $this->containerOptions;
+        $containerOptions['data-time'] = $this->time;
         Alert::begin($this->options);
-        echo Html::beginTag('div', $this->containerOptions);
+        echo Html::beginTag('div', $containerOptions);
         if ($this->icon) {
             echo Html::tag('div', $this->icon, ['class' => 'alert-icon']);
         }
