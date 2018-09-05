@@ -15,6 +15,7 @@ class GrowlAsset extends AssetBundle
         "css/growl.css"
     ];
     public $depends    = [
-        "yii\web\YiiAsset"
+        "yii\web\YiiAsset",
+        "rmrevin\yii\fontawesome\AssetBundle"
     ];
 }
