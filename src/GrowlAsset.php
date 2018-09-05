@@ -1,15 +1,17 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Nadzif Glovory
- * Date: 9/5/2018
- * Time: 11:56 AM
- */
 
 namespace nadzif\growl;
 
 
-class GrowlAsset
-{
+use yii\web\AssetBundle;
 
+class GrowlAsset extends AssetBundle
+{
+    public $sourcePath = "@nadzif/growl/assets";
+    public $js         = [
+        "js/growl.js",
+    ];
+    public $css        = [
+        "css/growl.css"
+    ];
 }
