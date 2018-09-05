@@ -13,11 +13,11 @@ use yii\web\JsExpression;
 class Growl extends Widget
 {
 
-    const ALERT_SUCCESS = 'alert-success';
-    const ALERT_DANGER  = 'alert-danger';
-    const ALERT_INFO    = 'alert-info';
-    const ALERT_WARNING = 'alert-warning';
-    const COLOR_SOLID   = 'alert-solid';
+    const TYPE_ERROR   = 'error';
+    const TYPE_DANGER  = 'danger';
+    const TYPE_SUCCESS = 'success';
+    const TYPE_INFO    = 'info';
+    const TYPE_WARNING = 'warning';
 
     public $icon;
     public $containerOptions = ['class' => 'd-sm-flex align-items-center justify-content-start alert-content'];
@@ -34,18 +34,12 @@ class Growl extends Widget
      * - value: the bootstrap alert type (i.e. danger, success, info, warning)
      */
     public $alertTypes = [
-        'error'   => 'alert-danger',
-        'danger'  => 'alert-danger',
-        'success' => 'alert-success',
-        'info'    => 'alert-info',
-        'warning' => 'alert-warning'
+        self::TYPE_DANGER  => 'alert-danger',
+        self::TYPE_ERROR   => 'alert-danger',
+        self::TYPE_SUCCESS => 'alert-success',
+        self::TYPE_INFO    => 'alert-info',
+        self::TYPE_WARNING => 'alert-warning'
     ];
-
-
-    public static function beginWrapper()
-    {
-        echo Html::beginTag('div', ['class' => 'alert-box box-side']);
-    }
 
     public static function showMessage($view, $title, $message, $type = 'success', $icon = 'fa fa-check', $time = 5000)
     {
@@ -84,9 +78,8 @@ class Growl extends Widget
         Alert::end();
         echo Html::endTag('template');
 
-        $session     = \Yii::$app->session;
-        $flashes     = $session->getAllFlashes();
-        $appendClass = isset($this->options['class']) ? ' ' . $this->options['class'] : '';
+        $session = \Yii::$app->session;
+        $flashes = $session->getAllFlashes();
 
         echo Html::beginTag('div', ['class' => 'alert-box box-side']);
 
@@ -137,23 +130,23 @@ class Growl extends Widget
     public static function defaultAttributes()
     {
         return [
-            'error'   => [
+            self::TYPE_ERROR   => [
                 'title' => \Yii::t('app', 'Error'),
                 'icon'  => 'fas fa-exclamation-circle '
             ],
-            'danger'  => [
+            self::TYPE_DANGER  => [
                 'title' => \Yii::t('app', 'Error'),
                 'icon'  => 'fas fa-exclamation-circle '
             ],
-            'success' => [
+            self::TYPE_SUCCESS => [
                 'title' => \Yii::t('app', 'Success'),
                 'icon'  => 'fa fa-check'
             ],
-            'info'    => [
+            self::TYPE_INFO    => [
                 'title' => \Yii::t('app', 'Information'),
                 'icon'  => 'fa fa-info'
             ],
-            'warning' => [
+            self::TYPE_WARNING => [
                 'title' => \Yii::t('app', 'Warning'),
                 'icon'  => 'fa fa-warning'
             ]
