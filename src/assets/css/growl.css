@@ -12,6 +12,17 @@
     z-index: 1031;
 }
 
+.alert-box.box-side .alert {
+    margin-bottom: 5px;
+    padding: 10px;
+}
+
+.alert-box.box-side .alert h5 {
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
 .alert-box.box-side > div {
     width: 100%;
     transition: all 3s;
@@ -44,12 +55,14 @@
 
 @media (min-width: 576px) {
     .alert-box.box-side .alert-icon {
-        display: block;
         width: 40px;
         height: 40px;
-        overflow: hidden;
-        text-align: center;
         margin: 0;
-        font-size: 40px;
+        margin-right: 0px;
+        font-size: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
     }
 }

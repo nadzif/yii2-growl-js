@@ -6,7 +6,7 @@ $(function () {
     const FloatAlert = {
         tempalte: '.alert-template',
         wrapper: '.alert-box',
-        time: 5000,
+        time: 3000,
 
         init: function () {
             self = this;
@@ -23,10 +23,11 @@ $(function () {
         },
 
         remove: function (el) {
-            $(el).find('.loading').css({'width': '100%', 'transition': 'width ' + this.time + 'ms'});
+            const time = $(el).find('#growl-container').data('time') || this.time;
+            $(el).find('.loading').css({'width': '100%', 'transition': 'width ' + time + 'ms'});
             return setTimeout(() => {
                 $(el).remove()
-            }, this.time);
+            }, time);
         },
 
         alertEvent: function (el) {
