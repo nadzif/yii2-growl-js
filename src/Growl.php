@@ -41,7 +41,7 @@ class Growl extends Widget
         self::TYPE_WARNING => 'alert-warning'
     ];
 
-    public static function showMessage($view, $title, $message, $type = 'success', $icon = 'fa fa-check', $time = 5000)
+    public static function showMessage($title, $message, $type = 'success', $icon = 'fa fa-check', $time = 5000)
     {
         return new JsExpression("window.FloatAlert.alert('" . $title . "', '" . $message . "', '" . $type . "', '"
             . $icon . "', " . $time . ");");
