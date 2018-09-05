@@ -4,7 +4,7 @@
 
 $(function () {
     const FloatAlert = {
-        tempalte: '.alert-template',
+        template: '.alert-template',
         wrapper: '.alert-box',
         time: 3000,
 
@@ -60,20 +60,20 @@ $(function () {
                     classType = 'alert-success';
             }
 
-            var tc = $(this.tempalte)[0].outerHTML;
+            var tc = $(this.template)[0].outerHTML;
             var template = $($.parseXML(tc)).contents();
             template = $(template).find('.alert').addClass(classType).wrap('<div class="wrap-unwrap"></div>');
 
             return template.parent().html();
         },
 
-        alert: function (tittle = '', message = '', type = 'success', icon) {
+        alert: function (tittle = '', message = '', type = 'success', icon = null, time = this.time) {
             if (!(/<[a-z][\s\S]*>/i.test(icon))) {
                 icon = '<i class="' + icon + '"></i>';
             }
 
             var template = this.getTemplate(type);
-            var content = template.replace('_TITLE_', tittle).replace('_MESSAGE_', message).replace('_ICON_', icon);
+            var content = template.replace('_TITLE_', tittle).replace('_MESSAGE_', message).replace('_ICON_', icon).replace('_TIME_', time);
 
             $(this.wrapper).append(content);
         },
@@ -95,10 +95,6 @@ $(function () {
         },
 
         renderAlert: function (data, icons = {}) {
-
-            console.log('data', data);
-            console.log('icons', icons);
-
             icons = Object.assign({}, this.defaultIcons(), icons);
 
             try {
