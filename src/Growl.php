@@ -1,13 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: haruk
- * Date: 5/27/2018
- * Time: 10:03 PM
- */
-
-namespace nadzif\grid\widgets;
-
+namespace nadzif\growl;
 
 use rmrevin\yii\fontawesome\FAS;
 use rmrevin\yii\fontawesome\FontAwesome;
@@ -15,7 +7,7 @@ use yii\base\Widget;
 use yii\bootstrap4\Alert;
 use yii\helpers\Html;
 
-class FloatAlert extends Widget
+class Growl extends Widget
 {
 
     const ALERT_SUCCESS = 'alert-success';
