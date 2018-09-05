@@ -14,4 +14,7 @@ class GrowlAsset extends AssetBundle
     public $css        = [
         "css/growl.css"
     ];
+    public $depends    = [
+        "yii\web\YiiAsset"
+    ];
 }
